@@ -1,5 +1,14 @@
-
-=
+<!--  --><title>MateKing · Laboratorio Matemático | BioForge</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Concepto: banner azul institucional (como la app de escritorio), pestañas por unidad, tarjetas de resultado y gráficas Plotly que siguen el tema. */
+:root {
+  --bg: #F3F6FA; --card: #FFFFFF; --line: #D5DEE9; --fg: #1E293B; --mute: #64748B;
+  --banner: #1F4E79; --banner-fg: #FFFFFF; --banner-sub: #DCE6F1;
+  --brand: #1F4E79; --brand-l: #DCE6F1; --accent: #F59E0B; --accent-fg: #1E293B;
+  --ok: #15803D; --ok-bg: #DCFCE7; --bad: #B91C1C; --warn: #B45309; --warn-bg: #FEF3C7;
+  --code-bg: #EEF3F9; --code-fg: #14375A; --tab: #E4EBF3; --input: #F8FAFC;
+  --u1: #1F4E79; --u2: #0F766E; --u3: #7C3AED; --u4: #B91C1C;
   --font: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", sans-serif;
   --mono: Consolas, "SF Mono", Menlo, "Liberation Mono", monospace;
 }
@@ -9,7 +18,7 @@
   --brand: #8DBBEA; --brand-l: #1E3248; --accent: #F5A524; --accent-fg: #1B1405;
   --ok: #4ADE80; --ok-bg: #12351F; --bad: #F87171; --warn: #FBBF24; --warn-bg: #3A2E10;
   --code-bg: #1B2B3F; --code-fg: #BFDBFE; --tab: #1A2A3D; --input: #0F1B2A;
-  --u1: #8DBBEA; --u2: #5EEAD4; --u3: #C4B5FD; --u4: #FCA5A5; <!--  -->color-scheme: dark; } }
+  --u1: #8DBBEA; --u2: #5EEAD4; --u3: #C4B5FD; --u4: #FCA5A5; color-scheme: dark; } }
 :root[data-theme="dark"] {
   --bg: #0F1722; --card: #162231; --line: #2A3A4F; --fg: #E6EDF5; --mute: #93A4B8;
   --banner: #17375A; --banner-fg: #FFFFFF; --banner-sub: #B9CCE2;
@@ -97,120 +106,237 @@ table.it th { color: var(--brand); background: var(--brand-l); }
 footer { color: var(--mute); font-size: 12px; text-align: center; margin-top: 20px; }
 @media (max-width: 560px) { header .who { text-align: left; } .plot { height: 360px; } }
 @media (prefers-reduced-motion: no-preference) { section.panel.on { animation: fade .18s ease-out; } @keyframes fade { from { opacity: .4; } to { opacity: 1; } } }
+</style>
 
-/* MateKing visual identity — solo presentación; no modifica la lógica de la aplicación */
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style id="mateking-visual-identity">
 :root {
-  --bg: #0b1020;
-  --card: #131c33;
-  --line: #2b3858;
-  --fg: #edf2ff;
-  --mute: #a6b2d1;
-  --banner: #101a35;
-  --banner-fg: #ffffff;
-  --banner-sub: #bdc9e9;
-  --brand: #9b8cff;
-  --brand-l: #242347;
-  --accent: #f6c453;
-  --accent-fg: #19162b;
-  --ok: #54d6a0;
-  --ok-bg: #12382f;
-  --bad: #ff777f;
-  --warn: #ffcb69;
-  --warn-bg: #3a2d19;
-  --code-bg: #0c1429;
-  --code-fg: #d6dcff;
-  --tab: #1a2542;
-  --input: #0d162c;
-  --u1: #9b8cff;
-  --u2: #54d6c7;
-  --u3: #f6c453;
-  --u4: #ff777f;
-  color-scheme: dark;
+  --bg:#FFF9EF; --card:#FFFFFF; --line:rgba(36,30,70,.13);
+  --fg:#1F1B2E; --mute:#6B6580;
+  --banner:#241E46; --banner-fg:#FFFFFF; --banner-sub:#D9D3F1;
+  --brand:#322A5C; --brand-l:#F4EFDf; --accent:#FFB627; --accent-fg:#241E46;
+  --ok:#168B6B; --ok-bg:#E3F8EF; --bad:#D94F3B; --warn:#B86B0A; --warn-bg:#FFF0CF;
+  --code-bg:#F6F0E6; --code-fg:#322A5C; --tab:#F2EDE4; --input:#FFFCF7;
+  --u1:#FFB627; --u2:#2FCB9E; --u3:#7B6BD6; --u4:#FF6B4A;
+  --font:'Plus Jakarta Sans',sans-serif; --mono:'Space Grotesk',monospace;
+  --mk-radius-lg:22px; --mk-radius-md:16px;
+  --mk-shadow:0 12px 32px -15px rgba(36,30,70,.28);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#17142B; --card:#211D3B; --line:rgba(224,218,255,.15);
+    --fg:#F7F3FF; --mute:#C0B9D8;
+    --banner:#17132F; --banner-fg:#FFFFFF; --banner-sub:#D0C9EE;
+    --brand:#FFD873; --brand-l:#332D53; --accent:#FFB627; --accent-fg:#241E46;
+    --ok:#57D8B0; --ok-bg:#173D36; --bad:#FF8D78; --warn:#FFD873; --warn-bg:#43351D;
+    --code-bg:#19162E; --code-fg:#F0DDAA; --tab:#2B2648; --input:#19162E;
+    --u1:#FFB627; --u2:#2FCB9E; --u3:#B7A9FF; --u4:#FF8A70;
+    color-scheme:dark;
+  }
 }
 :root[data-theme="dark"] {
-  --bg: #0b1020; --card: #131c33; --line: #2b3858; --fg: #edf2ff; --mute: #a6b2d1;
-  --banner: #101a35; --banner-fg: #ffffff; --banner-sub: #bdc9e9;
-  --brand: #9b8cff; --brand-l: #242347; --accent: #f6c453; --accent-fg: #19162b;
-  --ok: #54d6a0; --ok-bg: #12382f; --bad: #ff777f; --warn: #ffcb69; --warn-bg: #3a2d19;
-  --code-bg: #0c1429; --code-fg: #d6dcff; --tab: #1a2542; --input: #0d162c;
-  --u1: #9b8cff; --u2: #54d6c7; --u3: #f6c453; --u4: #ff777f; color-scheme: dark;
+  --bg:#17142B; --card:#211D3B; --line:rgba(224,218,255,.15);
+  --fg:#F7F3FF; --mute:#C0B9D8;
+  --banner:#17132F; --banner-fg:#FFFFFF; --banner-sub:#D0C9EE;
+  --brand:#FFD873; --brand-l:#332D53; --accent:#FFB627; --accent-fg:#241E46;
+  --ok:#57D8B0; --ok-bg:#173D36; --bad:#FF8D78; --warn:#FFD873; --warn-bg:#43351D;
+  --code-bg:#19162E; --code-fg:#F0DDAA; --tab:#2B2648; --input:#19162E;
+  --u1:#FFB627; --u2:#2FCB9E; --u3:#B7A9FF; --u4:#FF8A70; color-scheme:dark;
 }
-:root[data-theme="light"] {
-  --bg: #f3f2ff; --card: #ffffff; --line: #dedcf5; --fg: #20213b; --mute: #6e7191;
-  --banner: #211c4a; --banner-fg: #ffffff; --banner-sub: #d7d2ff;
-  --brand: #5145b8; --brand-l: #eeecff; --accent: #eebd42; --accent-fg: #211c4a;
-  --ok: #13795b; --ok-bg: #dff7ec; --bad: #c83f58; --warn: #946200; --warn-bg: #fff2cf;
-  --code-bg: #f1f0ff; --code-fg: #312b68; --tab: #e8e6fb; --input: #faf9ff;
-  --u1: #6759d6; --u2: #168c88; --u3: #bd8715; --u4: #c83f58; color-scheme: light;
-}
+html { scroll-behavior:smooth; }
 body {
-  background-image: radial-gradient(ellipse at 8% 0%, rgba(115, 95, 220, .16), transparent 35%),
-                    radial-gradient(ellipse at 95% 8%, rgba(246, 196, 83, .08), transparent 28%);
-  background-attachment: fixed;
+  background:
+    radial-gradient(ellipse at 95% 0%, rgba(255,182,39,.13), transparent 31rem),
+    radial-gradient(ellipse at 0% 38%, rgba(47,203,158,.08), transparent 28rem),
+    var(--bg);
+  color:var(--fg); font-family:var(--font); line-height:1.55;
 }
+h1,h2,h3,h4,h5 { font-family:'Fredoka','Plus Jakarta Sans',sans-serif; letter-spacing:-.015em; }
+.wrap { max-width:1440px; padding-left:clamp(18px,2.5vw,38px); padding-right:clamp(18px,2.5vw,38px); }
 header.banner {
-  border-bottom: 0;
-  background: linear-gradient(118deg, #10172f 0%, #252052 62%, #30234f 100%);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 28px rgba(0,0,0,.22);
+  background:linear-gradient(118deg,#241E46 0%,#322A5C 65%,#3B3270 100%);
+  color:var(--banner-fg); border-bottom:4px solid #FFB627;
+  box-shadow:0 8px 28px rgba(36,30,70,.18); position:relative; overflow:hidden;
 }
 header.banner::after {
-  content: "∑   π   √   ∫";
-  position: absolute; right: 4%; top: 50%; transform: translateY(-50%);
-  color: rgba(255,255,255,.055); font-size: clamp(28px, 5vw, 64px);
-  font-weight: 800; letter-spacing: .18em; pointer-events: none; white-space: nowrap;
+  content:""; position:absolute; width:300px; height:300px; border-radius:50%;
+  right:-95px; top:-205px; background:radial-gradient(circle,rgba(255,182,39,.28),transparent 70%);
+  pointer-events:none;
 }
-header.banner .wrap { padding-block: 22px; position: relative; z-index: 1; }
-header h1 { font-size: clamp(25px, 3vw, 34px); letter-spacing: -.045em; }
-.mk-crown { color: var(--accent); margin-right: 7px; }
-.mk-tag {
-  display: inline-block; vertical-align: middle; margin-left: 10px;
-  padding: 4px 8px; border: 1px solid rgba(246,196,83,.42); border-radius: 999px;
-  color: #f6c453; font-size: 9px; letter-spacing: .14em; font-weight: 800;
+header.banner .wrap { position:relative; z-index:1; gap:16px 28px; padding-block:20px; }
+header.banner h1 { display:flex; align-items:center; gap:14px; font-family:'Fredoka',sans-serif;
+  font-size:clamp(25px,2vw,32px); line-height:1.15; font-weight:700; color:#fff; }
+header.banner p { color:#D9D3F1; font-size:13px; margin-top:7px; max-width:800px; }
+header.banner .who { color:#D9D3F1; font-family:'Space Grotesk',sans-serif; line-height:1.7; }
+header.banner .who b { color:#FFD873; font-family:'Plus Jakarta Sans',sans-serif; }
+.mk-logo {
+  width:56px; height:56px; flex:0 0 56px; display:inline-flex; align-items:center; justify-content:center;
+  position:relative; border-radius:18px; padding:3px; background:linear-gradient(145deg,#FFD873,#FFB627);
+  box-shadow:0 7px 18px rgba(255,182,39,.28); border:1px solid rgba(255,255,255,.45);
 }
-header p { margin-top: 7px; }
-header .who { border-left: 1px solid rgba(255,255,255,.18); padding-left: 18px; }
-.card { border-radius: 13px; box-shadow: 0 5px 18px rgba(0,0,0,.10); }
-.bar, .ctl { border-radius: 14px; }
-.bar { margin-top: 18px; padding: 16px; }
+.mk-logo svg.mk-face { width:100%; height:100%; }
+.mk-logo svg.mk-crown { position:absolute; width:34px; height:19px; top:-7px; left:11px; filter:drop-shadow(0 2px 1px rgba(36,30,70,.18)); }
+.mk-heading-copy { display:flex; flex-direction:column; gap:2px; }
+.mk-kicker { color:#FFD873; text-transform:uppercase; letter-spacing:.13em; font:700 10px 'Space Grotesk',sans-serif; }
+.card {
+  background:var(--card); border:1px solid var(--line); border-radius:var(--mk-radius-md);
+  box-shadow:var(--mk-shadow); overflow:hidden;
+}
+.bar { margin-top:20px; padding:18px 20px; gap:14px; border-radius:var(--mk-radius-lg);
+  background:linear-gradient(135deg,var(--card),color-mix(in srgb,var(--card) 88%,#FFD873)); }
+.row { gap:10px 13px; }
+.row > label { color:var(--mute); font-size:12.5px; }
+.row > label.big { color:var(--brand); font-family:'Space Grotesk',sans-serif; font-size:16px; }
 input[type=text], select, textarea {
-  border-radius: 8px; transition: border-color .16s ease, box-shadow .16s ease;
+  color:var(--fg); background:var(--input); border:1.5px solid var(--line);
+  border-radius:11px; padding:9px 11px; transition:border-color .18s,box-shadow .18s,background .18s;
 }
-input[type=text]:focus, select:focus, textarea:focus {
-  border-color: var(--brand); box-shadow: 0 0 0 3px rgba(155,140,255,.13); outline: none;
+input[type=text]:focus, select:focus, textarea:focus, button:focus-visible, [role=tab]:focus-visible {
+  outline:3px solid rgba(255,182,39,.6); outline-offset:2px;
 }
+input.fn { font-family:'Space Grotesk',monospace; padding:11px 13px; border-radius:12px; }
+input.n,input.n2 { border-radius:10px; }
 button {
-  border-radius: 9px; padding: 9px 15px;
-  transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+  font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; border-radius:999px; padding:10px 18px;
+  transition:transform .16s ease,box-shadow .16s ease,filter .16s ease,background .16s ease;
 }
-button:hover { transform: translateY(-1px); }
+button:hover { transform:translateY(-1px); }
 button.go {
-  background: linear-gradient(135deg, #f7d574, #efb936);
-  box-shadow: 0 4px 12px rgba(246,196,83,.17);
+  color:#241E46; background:linear-gradient(135deg,#FFD873,#FFB627); border:1px solid rgba(232,148,12,.55);
+  box-shadow:0 7px 16px -8px rgba(255,182,39,.9);
 }
-button.sec {
-  background: var(--brand-l); color: var(--brand);
-  border: 1px solid color-mix(in srgb, var(--brand) 25%, transparent);
+button.go:hover { filter:brightness(1.02); box-shadow:0 9px 20px -8px rgba(255,182,39,.95); }
+button.sec { background:var(--brand-l); color:var(--brand); border:1px solid var(--line); padding:8px 14px; }
+button.sec:hover { filter:brightness(.98); }
+.err { color:var(--bad); }
+nav.tabs {
+  gap:5px; margin-top:20px; padding:5px 5px 0; border:1px solid var(--line);
+  border-bottom:0; border-radius:17px 17px 0 0; background:color-mix(in srgb,var(--card) 80%,var(--bg));
 }
-nav.tabs { gap: 5px; border-bottom-color: var(--line); margin-top: 18px; }
-[role=tab] { border-radius: 9px 9px 0 0; padding: 11px 15px; }
-[role=tab][aria-selected=true] { box-shadow: inset 0 3px 0 var(--u); }
-.stat { border-radius: 10px; border: 1px solid var(--line); border-left: 4px solid var(--c, var(--brand)); padding: 14px; }
-.box { padding: 18px; }
-.pasos, .ctl { border-radius: 13px; }
-.plot, .plot.sm { overflow: hidden; }
-footer { padding: 14px 8px 0; opacity: .85; }
-@media (max-width: 560px) {
-  header.banner .wrap { padding-block: 18px; }
-  .mk-tag { margin: 7px 0 0; }
-  header .who { border-left: 0; padding-left: 0; }
-  header.banner::after { right: -12%; opacity: .6; }
+[role=tab] {
+  background:transparent; color:var(--mute); border-radius:12px 12px 0 0; padding:12px 17px;
+  font-family:'Plus Jakarta Sans',sans-serif; border-bottom:3px solid transparent;
+}
+[role=tab][aria-selected=true] {
+  background:var(--card); color:var(--brand); border-bottom-color:var(--accent);
+  box-shadow:0 -3px 12px rgba(36,30,70,.04);
+}
+[role=tab] .u { border-radius:999px; font-family:'Space Grotesk',sans-serif; padding:2px 7px; }
+section.panel { padding-top:18px; }
+.cards { gap:14px; }
+.stat { padding:16px 18px; border-left-width:5px; border-radius:var(--mk-radius-md); }
+.stat strong { font-family:'Space Grotesk',sans-serif; font-size:clamp(19px,1.5vw,24px); }
+.two,.plots { gap:16px; }
+.box { padding:20px 22px; }
+.box h3 { font-size:18px; margin-bottom:12px; }
+.box pre.expr { font-size:14px; }
+.pasos { padding:12px 22px 20px; }
+.pasos h2 { font-family:'Fredoka',sans-serif; font-size:22px; color:var(--brand); }
+.paso h4 { font-family:'Plus Jakarta Sans',sans-serif; }
+.paso pre,pre.informe { border-radius:10px; }
+.paso pre { padding:9px 12px; }
+.plot { height:clamp(360px,32vw,500px); }
+.plot.sm { height:clamp(320px,27vw,420px); }
+.plots > .card { padding:8px; min-width:0; }
+.ctl { padding:18px 20px; gap:14px; border-radius:var(--mk-radius-lg); }
+table.vt,table.it { border-collapse:separate; border-spacing:0; overflow:hidden; }
+table.vt th,table.it th { background:var(--brand-l); color:var(--brand); padding:9px 11px; }
+table.vt td,table.it td { padding:7px 10px; border-bottom:1px solid var(--line); }
+table.vt input { border-radius:8px; }
+.scroll { border-radius:12px; }
+.ayuda { line-height:1.75; padding:22px 26px; }
+footer { margin-top:28px; padding:18px; color:var(--mute); }
+@media (min-width:1100px) {
+  .two { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .plots { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:760px) {
+  header.banner .wrap { align-items:flex-start; }
+  header.banner h1 { font-size:24px; }
+  .mk-logo { width:46px; height:46px; flex-basis:46px; border-radius:15px; }
+  .mk-logo svg.mk-crown { width:29px; left:9px; }
+  header.banner .who { text-align:left; }
+  nav.tabs { border-radius:13px 13px 0 0; }
+  [role=tab] { padding:10px 12px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after { scroll-behavior:auto !important; transition:none !important; animation:none !important; }
 }
 </style>
 
+
+
+<svg style="display:none" aria-hidden="true">
+  <defs>
+    <symbol id="face-normal" viewBox="0 0 200 200">
+      <path d="M40 55 L20 5 L70 40 Z" fill="#E8940C"/>
+      <path d="M160 55 L180 5 L130 40 Z" fill="#E8940C"/>
+      <path d="M45 50 L30 15 L65 38 Z" fill="#FFB627"/>
+      <path d="M155 50 L170 15 L135 38 Z" fill="#FFB627"/>
+      <path d="M48 45 L38 22 L58 36 Z" fill="#FFE3B3"/>
+      <path d="M152 45 L162 22 L142 36 Z" fill="#FFE3B3"/>
+      <circle cx="100" cy="108" r="82" fill="#FFB627"/>
+      <path d="M58 42 Q70 58 60 76" stroke="#E8940C" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M142 42 Q130 58 140 76" stroke="#E8940C" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M32 98 Q54 92 64 102" stroke="#E8940C" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M168 98 Q146 92 136 102" stroke="#E8940C" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <circle cx="54" cy="132" r="10" fill="#FF9E80" opacity="0.5"/>
+      <circle cx="146" cy="132" r="10" fill="#FF9E80" opacity="0.5"/>
+      <rect x="36" y="100" width="54" height="42" rx="17" fill="#F4FAFF" stroke="#241E46" stroke-width="7"/>
+      <rect x="110" y="100" width="54" height="42" rx="17" fill="#F4FAFF" stroke="#241E46" stroke-width="7"/>
+      <line x1="90" y1="115" x2="110" y2="115" stroke="#241E46" stroke-width="7"/>
+      <line x1="28" y1="110" x2="12" y2="102" stroke="#241E46" stroke-width="6" stroke-linecap="round"/>
+      <line x1="172" y1="110" x2="188" y2="102" stroke="#241E46" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="63" cy="121" r="9" fill="#241E46"/>
+      <circle cx="137" cy="121" r="9" fill="#241E46"/>
+      <circle cx="66" cy="117" r="3" fill="#fff"/>
+      <circle cx="140" cy="117" r="3" fill="#fff"/>
+      <path d="M100 146 L92 156 L108 156 Z" fill="#FF6B4A"/>
+      <path d="M100 156 Q100 166 90 163 M100 156 Q100 166 110 163" stroke="#241E46" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <line x1="18" y1="144" x2="44" y2="140" stroke="#241E46" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+      <line x1="18" y1="156" x2="44" y2="154" stroke="#241E46" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+      <line x1="182" y1="144" x2="156" y2="140" stroke="#241E46" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+      <line x1="182" y1="156" x2="156" y2="154" stroke="#241E46" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+    </symbol>
+
+    <symbol id="face-happy" viewBox="0 0 200 200">
+      <path d="M40 55 L20 5 L70 40 Z" fill="#E8940C"/>
+      <path d="M160 55 L180 5 L130 40 Z" fill="#E8940C"/>
+      <path d="M45 50 L30 15 L65 38 Z" fill="#FFB627"/>
+      <path d="M155 50 L170 15 L135 38 Z" fill="#FFB627"/>
+      <path d="M48 45 L38 22 L58 36 Z" fill="#FFE3B3"/>
+      <path d="M152 45 L162 22 L142 36 Z" fill="#FFE3B3"/>
+      <circle cx="100" cy="108" r="82" fill="#FFB627"/>
+      <path d="M58 42 Q70 58 60 76" stroke="#E8940C" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M142 42 Q130 58 140 76" stroke="#E8940C" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <circle cx="54" cy="132" r="11" fill="#FF9E80" opacity="0.6"/>
+      <circle cx="146" cy="132" r="11" fill="#FF9E80" opacity="0.6"/>
+      <rect x="36" y="100" width="54" height="42" rx="17" fill="#F4FAFF" stroke="#241E46" stroke-width="7"/>
+      <rect x="110" y="100" width="54" height="42" rx="17" fill="#F4FAFF" stroke="#241E46" stroke-width="7"/>
+      <line x1="90" y1="115" x2="110" y2="115" stroke="#241E46" stroke-width="7"/>
+      <line x1="28" y1="110" x2="12" y2="102" stroke="#241E46" stroke-width="6" stroke-linecap="round"/>
+      <line x1="172" y1="110" x2="188" y2="102" stroke="#241E46" stroke-width="6" stroke-linecap="round"/>
+      <path d="M52 121 Q63 108 74 121" stroke="#241E46" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M126 121 Q137 108 148 121" stroke="#241E46" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M100 146 L92 156 L108 156 Z" fill="#FF6B4A"/>
+      <path d="M76 152 Q100 176 124 152" stroke="#241E46" stroke-width="5" fill="none" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="crown" viewBox="0 0 120 60">
+      <path d="M8 52 L8 24 L30 40 L60 12 L90 40 L112 24 L112 52 Z" fill="#FFD873" stroke="#241E46" stroke-width="5" stroke-linejoin="round"/>
+      <circle cx="30" cy="27" r="6" fill="#FF6B4A"/>
+      <circle cx="60" cy="17" r="6" fill="#2FCB9E"/>
+      <circle cx="90" cy="27" r="6" fill="#FF6B4A"/>
+    </symbol>
+  </defs>
+</svg>
 <header class="banner"><div class="wrap">
-  <div><h1><span class="mk-crown" aria-hidden="true">♛</span> MateKing <span class="mk-tag">LABORATORIO MATEMÁTICO</span></h1><p>Explora funciones, gradientes e integrales paso a paso</p></div>
+  <div class="mk-heading-copy">
+    <span class="mk-kicker">BioForge · Herramienta educativa</span>
+    <h1><span class="mk-logo" aria-hidden="true"><svg class="mk-face" viewBox="0 0 200 200"><use href="#face-normal"></use></svg><svg class="mk-crown" viewBox="0 0 120 60"><use href="#crown"></use></svg></span><span>MateKing · Laboratorio Matemático</span></h1>
+  </div>
   <div class="who"><b>Universidad Nacional de Ingeniería</b>Ingeniería en Computación · Grupo 1M1</div>
 </div></header>
 
@@ -348,7 +474,7 @@ footer { padding: 14px 8px 0; opacity: .85; }
       <pre class="informe" id="m4Inf" tabindex="0"></pre></div>
   </section>
   <section class="panel" id="p-ayuda"><div class="card ayuda" id="ayudaTxt"></div></section>
-  <footer>MateKing · Laboratorio matemático interactivo · Funciona sin conexión. Usa los resultados para verificar tus procedimientos y explicar cada paso a mano.</footer>
+  <footer>Python (módulos originales) · esta versión HTML usa fracciones exactas y funciona sin internet. Sirve para verificar: en la defensa hay que poder hacer cada paso a mano.</footer>
 </div>
 
 <script>/**
@@ -1998,4 +2124,3 @@ function init() {
 init();
 })();
 </script>
-
